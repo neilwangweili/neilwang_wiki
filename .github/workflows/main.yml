@@ -39,6 +39,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
           TARGET_MACHINE: ${{ secrets.TARGET_MACHINE }}
+          DOCKER_REPO_NAME: ${{secrets.DOCKER_REPO_NAME}}
         run: |
           sudo tee /etc/docker/daemon.json <<- EOF
                       {
@@ -51,7 +52,7 @@ jobs:
           sudo tee /home/id_rsa <<- EOF
           $DEPLOY_KEY
           EOF
-          sshkey-gen -R $TARGET_MACHINE
+          ssh-keygen -R $TARGET_MACHINE
           ssh -i /home/id_rsa $TARGET_MACHINE "docker rm -f neilwang.wiki"
           ssh -i /home/id_rsa $TARGET_MACHINE "docker pull $DOCKER_ADDRESS/neilwang.wiki:latest"
           ssh -i /home/id_rsa $TARGET_MACHINE "docker run --name neilwang.wiki -d -p 10080:80 --restart always $DOCKER_ADDRESS/$DOCKER_REPO_NAME"

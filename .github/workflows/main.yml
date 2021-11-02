@@ -23,8 +23,8 @@ jobs:
               ]
             }
           EOF
-          docker login --username="$DOCKER_USERNAME" --password="$DOCKER_PASSWORD" "$DOCKER_ADDRESS"
-          docker build -t "$DOCKER_ADDRESS"/neilwang.wiki:latest . && docker push "$DOCKER_ADDRESS"/neilwang.wiki:latest
+          docker login --username="$DOCKER_USERNAME" --password="$DOCKER_PASSWORD" $DOCKER_ADDRESS
+          docker build -t $DOCKER_ADDRESS/neilwang.wiki:latest . && docker push $DOCKER_ADDRESS/neilwang.wiki:latest
   deploy:
     runs-on: ubuntu-latest
     needs: build

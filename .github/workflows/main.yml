@@ -19,7 +19,7 @@ jobs:
           sudo tee /etc/docker/daemon.json <<- EOF
             {
               "insecure-registries": [
-                ""$DOCKER_ADDRESS""
+                "$DOCKER_ADDRESS"
               ]
             }
           EOF
@@ -35,6 +35,6 @@ jobs:
           DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
         run: |
           sudo tee /home/id_rsa <<-EOF
-          "$DEPLOY_KEY"
+          $DEPLOY_KEY
           EOF
           sh ./scripts/deploy.sh

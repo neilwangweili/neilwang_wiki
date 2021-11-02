@@ -16,6 +16,13 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
         run: |
+          tee /etc/docker/daemon.json <<- 'EOF'
+            {
+              "insecure-registries": [
+                ""$DOCKER_ADDRESS""
+              ]
+            }
+          EOF
           docker login --username="$DOCKER_USERNAME" --password="$DOCKER_PASSWORD" "$DOCKER_ADDRESS"
           sh ./scripts/build.sh
   deploy:

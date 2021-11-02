@@ -15,6 +15,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
+          DOCKER_REPO_NAME: ${{secrets.DOCKER_REPO_NAME}}
         run: |
           sudo tee /etc/docker/daemon.json <<- EOF
             {
@@ -25,7 +26,7 @@ jobs:
           EOF
           sudo service docker restart
           docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD $DOCKER_ADDRESS
-          docker build -t $DOCKER_ADDRESS/neilwang.wiki:latest . && docker push $DOCKER_ADDRESS/neilwang.wiki:latest
+          docker build -t $DOCKER_ADDRESS/$DOCKER_REPO_NAME . && docker push $DOCKER_ADDRESS/$DOCKER_REPO_NAME
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -34,8 +35,22 @@ jobs:
       - name: deploy
         env:
           DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
+          TARGET_MACHINE: ${{ secrets.TARGET_MACHINE }}
         run: |
-          sudo tee /home/id_rsa <<-EOF
+          sudo tee /home/id_rsa <<- EOF
           $DEPLOY_KEY
           EOF
-          sh ./scripts/deploy.sh
+          sudo tee /etc/docker/daemon.json <<- EOF
+                      {
+                        "insecure-registries": [
+                          "$DOCKER_ADDRESS"
+                        ]
+                      }
+          EOF
+          sudo service docker restart
+          ssh -i /home/id_rsa $TARGET_MACHINE "docker rm -f neilwang.wiki"
+          ssh -i /home/id_rsa $TARGET_MACHINE "docker pull $DOCKER_ADDRESS/neilwang.wiki:latest"
+          ssh -i /home/id_rsa $TARGET_MACHINE "docker run --name neilwang.wiki -d -p 10080:80 --restart always $DOCKER_ADDRESS/$DOCKER_REPO_NAME"

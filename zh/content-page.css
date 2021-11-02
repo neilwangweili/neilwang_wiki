@@ -1,0 +1,128 @@
+.content-body {
+    background-color: #FFE2BD;
+}
+
+@media only screen and (min-width: 50em) {
+    .content-body-class {
+        width: 100%;
+        margin: 80px 0
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    .content-body-class {
+        width: 100%;
+        margin: 80px 0
+    }
+}
+
+@media only screen and (min-width: 50em) {
+    .content-description {
+        font-size: 2rem;
+        color: #A33121;
+        line-height: 4rem;
+        margin: 0 200px;
+        padding: 0;
+        text-align: left;
+        margin-bottom: 4rem;
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    .content-description {
+        font-size: 1rem;
+        color: #A33121;
+        line-height: 1.2rem;
+        margin: 0 auto;
+        width: 80%;
+        padding: 0;
+        text-align: left;
+        margin-bottom: 4rem;
+    }
+}
+
+.content-infos {
+    font-size: 1rem;
+    color: black;
+    line-height: 1.2rem;
+    margin: 0 auto;
+    width: 80%;
+    padding: 0;
+    margin-bottom: 4rem;
+}
+
+.markdown {
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    line-height: 1.4rem;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.content-h1 {
+    font-size: 2rem;
+    font-style: italic;
+    margin: 60px 0 20px 0;
+}
+
+.content-h2 {
+    font-size: 1.6rem;
+    margin: 60px 0 20px 50px;
+}
+
+.content-h3 {
+    font-size: 1.2rem;
+    margin: 60px 0 20px 50px;
+}
+
+.content-words {
+    font-size: 1rem;
+    line-height: 2rem;
+    padding: 10px 0;
+}
+
+.content-mention {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.content-addition {
+    font-size: 1rem;
+    line-height: 2rem;
+    padding: 10px 0;
+    margin: 50px 0 0 0;
+    color: gray;
+}
+
+.content-list {
+    font-size: 1rem;
+    padding: 10px 0 10px 20px;
+}
+
+.back-to-home-page {
+    margin: 100px 0;
+    text-align: center;
+}
+
+.content-unlist {
+    font-size: 1rem;
+    padding: 10px 0 10px 20px;
+}
+
+.content-imports {
+    color: #5959c0;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    padding: 40px 20px;
+}
+
+.content-image {
+    height: 80%;
+    width: 80%;
+    margin: 20px auto;
+    justify-items: center;
+    align-items: center;
+    display: grid;
+}

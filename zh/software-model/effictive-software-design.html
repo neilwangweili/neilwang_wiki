@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>思考优异的软件设计</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../img/icon.png">
+    <link as="font" crossorigin="" href="../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='../subscribe/index.html'">Subscribe</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body">
+<div class="content-body-class">
+    <h1 class="hosting-pricing-plan-block__header">思考优异的软件设计</h1>
+    <div class="content-infos">
+        <div class="content-h1">
+            为什么需要软件设计？
+        </div>
+        <div class="content-words">
+            在过去，软件所需要承担的功能较少，人们编码不考虑结构、模型，依旧可以完成业务功能。但时至今日，软件的规模、复杂程度已今非昔比，人类的大脑无法处理如此错综复杂的逻辑关系，软件设计的理念也应运而生。
+        </div>
+        <div class="content-h1">
+            分离关注
+        </div>
+        <div class="content-imports">
+            The most important principle in Software Engineering is the Separation of Concerns (SoC): The idea that a
+            software system must be decomposed into parts that overlap in functionality as little as possible. It is so
+            central that it appears in many different forms in the evolution of all methodologies, programming languages
+            and best practices. Dijkstra mentions it in 1974: “separation of concerns … even if not perfectly possible
+            is yet the only available technique for effective ordering of one’s thoughts”. Information Hiding, defined
+            by Parnas in 1972, focuses on reducing the dependency between modules through the definition of clear
+            interfaces. A further improvement was Abstract Data Types (ADT), by Liskov in 1974, which integrated data
+            and functions in a single definition. <br/>
+            来自 <a href="https://effectivesoftwaredesign.com/2012/02/05/separation-of-concerns/">https://effectivesoftwaredesign.com/2012/02/05/separation-of-concerns/</a>
+        </div>
+        <div class="content-words">
+            早在1974年，Dijkstra提出了分离关注的概念，他指出软件系统必须分解为功能上尽可能少重叠的部分，通过定义接口来减少模块的依赖性，这也是OOP（面向对象编程）理念诞生的温床。现在，软件的复杂程度很高，人们需要将其按照一定的规律、结构进行“分离关注”。
+        </div>
+        <div class="content-h1">
+            目前的流行架构
+        </div>
+        <div class="content-words">
+            目前的流行架构大致可以分为两种：
+        </div>
+        <div class="content-list">
+            1. 分层架构(Layered Architecture)
+        </div>
+        <div class="content-list">
+            2. 六边形架构(Hexagonal Architecture)
+        </div>
+        <div class="content-words">
+            接下来，笔者会分别介绍这两种架构及其区别。
+        </div>
+        <div class="content-h1">
+            分层架构(Layered Architecture)
+        </div>
+        <div class="content-words">
+            分层架构是以层面作为关注点进行的关注分离，这是一种最为常见的架构模式。其大致可以分为以下几个层级： 展示层 → 业务层 → 服务层 → 持久层 → 数据库层
+            其中，每一层都向后一层产生依赖。在某些情况下，业务层和服务层被组合成了一层，例如国内较为流行的
+            <span class="content-mention">
+                UiFrontends
+            </span>
+            ->
+            <span class="content-mention">
+                Controller
+                </span> ->
+            <span class="content-mention">
+                Service
+            </span>
+            ->
+            <span class="content-mention">
+                DaO
+            </span>
+            ->
+            <span class="content-mention">
+                Database
+            </span>
+            就是分层架构设计。因此，较小的应用程序可能有三层，而更大、更复杂的应用程序可能包含五个或更多的层次。分层架构模式的每一层在应用程序中都有特定的作用和责任。展示层负责处理所有用户界面和浏览器通信逻辑，业务层负责执行相应的规则。每个层次都有其相对应的责任，只需要关心自己的职责。
+        </div>
+        <div class="content-words">
+            用户不可以直接访问数据库层，必须通过展示层访问业务层，再由业务层访问服务层，依次向下传递，最后命中数据库层。不通过展示层直接访问数据库层的原因是一个关键概念：隔离层。
+        </div>
+        <div class="content-words">
+            隔离层概念意味着架构的某一层所做的更改通常不会影响或影响其他层中的组件：该更改被隔离在该层内的组件，可能还有另一个关联层（例如包含SQL的持久层）。如果您允许演示层直接访问持久层，那么持久层内对SQL所做的更改将同时影响业务层和演示层，从而产生一个非常紧密耦合的应用程序，组件之间有很多相互依存关系。然后，这种类型的架构变得非常困难和昂贵。
+        </div>
+        <div class="content-words">
+            还有一个关键的问题：层次依赖。分层架构最底层的依赖是数据库层和持久层，对数据库层的任何技术变更都很难在持久层进行控制，往往会影响到服务层。
+        </div>
+        <div class="content-h1">
+            六边形架构(Hexagonal Architecture)
+        </div>
+        <div class="content-words">
+            在这个架构中，核心组件是一个干净的只拥有业务代码、不包含技术代码的组件(core)。core不应该知道业务的具体技术实现，也不应该知道数据的具体实现。这个架构模型大概如下：
+        </div>
+        <div class="content-image">
+            <img src="../../img/software-model/effictive-software-model/hexagonal-architecture.png"/>
+        </div>
+        <div class="content-words">
+            非业务核心通过依赖映射 ( 依赖倒置 ) 的手段“插入”至
+            <span class="content-mention">Core
+            </span>
+            的端口上。
+        </div>
+        <div class="content-words">
+            这样，由于核心业务代码是最底层的依赖，所以对于技术的变更可以很好的被控制在其相对应的服务上，但六边形架构对编码者提出了一些技术和经验的要求。
+        </div>
+        <div class="content-h1">
+            整洁架构(Clean Architecture)
+        </div>
+        <div class="content-words">
+            六边形架构是一种很好的架构理念，但没有谁能说清楚六边形所对应的六条边分别代表什么。所以整洁架构出现了：这是一种对六边形架构的优秀实践。架构模型如下：
+        </div>
+        <div class="content-image">
+            <img src="../../img/software-model/effictive-software-model/clean-architecture.jpg"/>
+        </div>
+        <div class="content-h2">
+            属地规则
+        </div>
+        <div class="content-words">
+            同心圆代表软件的不同领域。一般来说，你走得越远，软件的水平就越高。外圈是机制。核心圈子是政策。
+            使该架构工作的压倒一切规则是依赖规则。这个规则说源代码依赖只能指向内。核心圈子里的任何内容都无法知道外圈中的任何内容。特别是，在外圈中声明的东西的名称不得被内圈中的代码提及。这包括函数、类、变量或任何其他命名的软件实体。
+        </div>
+        <div class="content-words">
+            同样，外圈中使用的数据格式不应被内圈使用，特别是如果这些格式是由外圈中的框架生成的。我们不想让外圈中的任何东西影响内圈。
+        </div>
+        <div class="content-h2">
+            Entities
+        </div>
+        <div class="content-words">
+            实体封装了业务范围的业务规则。一个实体可以是带有方法的对象，也可以是一组数据结构和方法。只要实体可以被企业中的许多不同应用程序使用，这并不重要。
+            如果您没有业务，并且只是编写单个应用程序，那么这些实体是应用程序的业务对象。它们封装了最一般和最高级的规则。当外部变化时，它们最不可能改变。例如，您不会期望这些对象受到页面导航或安全性更改的影响。任何特定应用程序的操作更改均不应影响实体层。
+        </div>
+        <div class="content-h2">
+            Use Cases
+        </div>
+        <div class="content-words">
+            该层的软件包含应用程序特定的业务规则。它封装并实现了系统的所有用例。这些用例协调数据进出实体，并指示这些实体使用其全业务范围的业务规则来实现用例的目标。
+            我们预计此层的更改不会影响实体。我们也预计该层不会受到外部性变化的影响，如数据库、用户界面或任何公共框架。这一层与此类担忧是孤立的。
+            然而，我们确实希望应用程序操作的更改将影响用例，从而影响此层中的软件。如果用例的细节发生变化，那么这一层中的一些代码肯定会受到影响。
+        </div>
+        <div class="content-h2">
+            Interface Adapters
+        </div>
+        <div class="content-words">
+            该层的软件是一组适配器，可以将数据从对用例和实体最方便的格式转换为对数据库或Web等外部机构最方便的格式。例如，正是这一层将完全包含GUI的MVC架构。展示者、视图和控制器都属于这里。这些模型可能只是数据结构，从控制器传递给用例，然后从用例返回到演示者和视图。
+            同样，在本层中，数据从对实体和用例最方便的形式转换为对正在使用的任何持久性框架最方便的形式。数据库。这个圆圈内的任何代码都应该对数据库一无所知。如果数据库是SQL数据库，那么所有SQL都应该限制在这个层，特别是这个层中与数据库有关的部分。
+            在此层中，还有任何其他必要的适配器，可以将数据从某些外部形式（如外部服务）转换为用例和实体使用的内部形式。
+        </div>
+        <div class="content-h2">
+            Gateways
+        </div>
+        <div class="content-words">
+            最外层通常由数据库、Web框架等框架和工具组成。通常，除了向内向下一个圆圈通信的胶合代码外，您不会在此层中编写太多代码。
+            这一层是所有细节的去处。网络是一个细节。数据库是一个细节。我们把这些东西放在外面，它们不会对内部依赖造成什么入侵，这些细节对技术框架产生了依赖，如果这些技术框架产生了变更，那么编码工作者就可以将其控制在防腐层中。
+        </div>
+        <div class="content-h1">
+            总结
+        </div>
+        <div class="content-words">
+            这些架构设计各有优劣，我们应用心思考孰优孰劣，谨慎使用架构去完成业务目标。
+        </div>
+        <div class="content-addition">
+            引用：<br/>
+            <a href="https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html">
+                https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch01.html
+            </a><br/>
+            <a href="https://medium.com/@matiasvarela/hexagonal-architecture-in-go-cfd4e436faa3">
+                https://medium.com/@matiasvarela/hexagonal-architecture-in-go-cfd4e436faa3
+            </a><br/>
+            <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">
+                https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

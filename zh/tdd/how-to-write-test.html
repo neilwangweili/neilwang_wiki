@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>如何写测试，有哪些步骤？</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../img/icon.png">
+    <link as="font" crossorigin="" href="../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='../subscribe/index.html'">Subscribe</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body">
+<div class="content-body-class">
+    <h1 class="hosting-pricing-plan-block__header">如何让代码更可测试？</h1>
+    <div class="content-infos">
+        <div class="content-words">
+            测试最为经典的三步曲，偏业务一点的说法：
+        </div>
+        <div class="content-unlist">
+            Given 给定什么业务场景下，比如用户登录，正确的用户名和密码
+        </div>
+        <div class="content-unlist">
+            When 用户在系统中产生的行为，比如登录
+        </div>
+        <div class="content-unlist">
+            Then 期望的结果，比如登录成功，用户进入主界面
+        </div>
+        <div class="content-words">
+            技术一点的描述，为了方便记忆，有个3A框架：
+        </div>
+        <div class="content-unlist">
+            Arrange 安排，排版，理解为数据组织，数组准备
+        </div>
+        <div class="content-unlist">
+            Act 执行操作，方法调用
+        </div>
+        <div class="content-unlist">
+            Assert 断言，断言结果是否符合预期
+            任何粒度的测试编写的步骤总结起来就是这三步，三步曲通常不难理解，相比于测试的编写步骤，我建议更多地去思考如何编写有效的单元测试，关于这个话题，可以阅读这本书
+            <a href="https://github.com/VWWL/library/blob/main/计算机/代码设计/有效的单元测试.pdf">《有效的单元测试》</a>。
+        </div>
+        <div class="content-words">
+            最后补充一下单元测试的的FIRST原则：
+        </div>
+        <div class="content-unlist">
+            Fast，快
+        </div>
+        <div class="content-unlist">
+            Isolation，隔离
+        </div>
+        <div class="content-unlist">
+            Repeatable，可重复
+        </div>
+        <div class="content-unlist">
+            Self Validation，自我校验，有断言
+        </div>
+        <div class="content-unlist">
+            Timely，编写及时，最好是测试先行
+        </div>
+        <div class="content-addition">
+            文章转载自<a href="https://xpbootcamp.cn/tdd/questions/003">袁慎建</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>
+

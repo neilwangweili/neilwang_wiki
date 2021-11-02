@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>写测试过程中要先解决编译错误吗？</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../img/icon.png">
+    <link as="font" crossorigin="" href="../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='../subscribe/index.html'">Subscribe</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body">
+<div class="content-body-class">
+    <h1 class="hosting-pricing-plan-block__header">写测试过程中要先解决编译错误吗？</h1>
+    <div class="content-infos">
+        <div class="content-words">
+            回答这个问题前，先来回顾一下TDD的三顶帽子：
+        </div>
+        <div class="content-unlist">
+            红，添加一个测试
+        </div>
+        <div class="content-unlist">
+            绿，让测试通过
+        </div>
+        <div class="content-unlist">
+            蓝，重构代码（包含功能代码和测试代码）
+        </div>
+        <div class="content-words">
+            我常常会开玩笑说：做TDD其实是在不断切换三顶帽子，先戴红帽子，再戴绿帽子，然后戴蓝帽子。用帽子来打比方，借助了<a
+                href="https://en.wikipedia.org/wiki/Six_Thinking_Hats">六顶思考帽</a>
+            的帽子隐喻。当我们带上一种帽子的时候，就应该清楚自己应该做什么事情。
+        </div>
+        <div class="content-words">
+            TDD借助这些隐喻提倡的是<a
+                href="https://en.wikipedia.org/wiki/Separation_of_concerns">SoC（Seperation of Concerns）</a>
+            的思想，每次只聚焦在一件事情上。大量心理学研究证明，人们在足够专注的时候，有可能进入心流状态，而进入心流状态后生产力会大大提升。很多职场专业人士也都在提倡任务排优先级，要排除干扰，不被打断，保持专注，这样才能更高效率的产出。TDD的三顶帽子其实是在帮助我们专注聚焦。
+        </div>
+        <div class="content-words">
+            我们在写测试的时候，戴的是红帽子，这个时候我们应该关注以下几点（按倒逼驱动的方式）：
+        </div>
+        <div class="content-unlist">
+            结果是什么，如何验收？（定义验收标准）
+        </div>
+        <div class="content-unlist">
+            做了什么事情导致了这样的结果？（定义行为规范）
+        </div>
+        <div class="content-unlist">
+            什么场景下做的事情？（定义行为条件）
+        </div>
+        <div class="content-words">
+            当我们做完了上面的事情之后，可以摘下红帽子，然后换上绿色帽子，带上绿色帽子，我们应该关注一点：
+        </div>
+        <div class="content-unlist">
+            如何快速让这一个测试通过？
+        </div>
+        <div class="content-words">
+            回到我们的问题，如果在编写测试的时候，遇到类不存在，就去创建类，遇到方法不存在，就去创建方法。其实是在不断做红、绿切换，此时我们的关注点会被干扰打乱，因为解决编译错误，比如创建不存在的类和方法其实是在写功能代码。
+        </div>
+        <div class="content-words">
+            假如你在写文章的时候，旁边编辑的关于文章发稿的各种问题，你会有什么感受？再比如，你让单核CPU同时干了两个文件复制任务，眼看着是同时进行，实际上CPU在不断切换执行，而切换本身就是一种资源损耗。
+        </div>
+        <div class="content-words">
+            所以，我的建议是写测试过程中，戴着红帽子就专注干红帽子的事情，减少不必要的切换导致的注意力分散，另外你在测试和实现代码不断跳来跳去也是一种思维干扰。
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

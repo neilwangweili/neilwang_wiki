@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 error</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" href="./img/icon.png">
+    <link as="font" crossorigin="" href="./Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="./Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="./source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="./Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="./source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="./common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="./home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="./zh/content-page.css" rel="stylesheet" type="text/css"/>
+    <link href="./suduko/suduko.css" rel="stylesheet" media="all"/>
+
+    <style type="text/css">
+        li.remove_frame a {
+            padding-top: 5px;
+            background-position: 0px -3px;
+        }
+    </style>
+
+    <![endif]-->
+
+    <script type="text/javascript" src="./suduko/jquery.min.js"></script>
+    <script type="text/javascript" src="./suduko/jquery.qrcode.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function fixHeight() {
+                var headerHeight = $("#switcher").height();
+                $("#iframe").attr("height", $(window).height() - 54 + "px");
+            }
+
+            $(window).resize(function () {
+                fixHeight();
+            }).resize();
+
+            $('.icon-monitor').addClass('active');
+
+            $(".icon-mobile-3").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width-3');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-mobile-2").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width-2');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-mobile-1").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('mobile-width');
+                $('.icon-tablet,.icon-mobile,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-tablet").click(function () {
+                $("#by").css("overflow-y", "auto");
+                $('#iframe-wrap').removeClass().addClass('tablet-width');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+
+            $(".icon-monitor").click(function () {
+                $("#by").css("overflow-y", "hidden");
+                $('#iframe-wrap').removeClass().addClass('full-width');
+                $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+                $(this).addClass('active');
+                return false;
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function Responsive($a) {
+            if ($a == true) $("#Device").css("opacity", "100");
+            if ($a == false) $("#Device").css("opacity", "0");
+            $('#iframe-wrap').removeClass().addClass('full-width');
+            $('.icon-tablet,.icon-mobile-1,.icon-monitor,.icon-mobile-2,.icon-mobile-3').removeClass('active');
+            $(this).addClass('active');
+            return false;
+        };
+    </script>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="./svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='/'">Home</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body" id="by">
+<div class="content-body-class">
+    <div class="content-infos">
+        <div class="content-h1">
+            糟糕了！您访问的页面似乎不存在或已消失...来玩一把数独？
+        </div>
+        <div id="iframe-wrap">
+            <iframe id="iframe" src="./suduko/suduko.html" frameborder="0" width="100%"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TDD</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../img/icon.png">
+    <link as="font" crossorigin="" href="../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='../subscribe/index.html'">Subscribe</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body">
+<div class="content-body-class">
+    <h1 class="hosting-pricing-plan-block__header">测试驱动开发</h1>
+    <div class="content-description">
+        测试驱动开发通过对测试的红、绿、蓝状态切换原则，可以获得安全、整洁的代码。
+    </div>
+    <div class="news-feed__inner">
+        <div class="news-feed__container">
+            <a class="news-feed__post"
+               href="./how-to-use-tdd-to-dev.html">
+                <img
+                        src="../../img/tdd/how-to-use-tdd-to-dev/avatar.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">仅仅是覆盖率？如何让TDD成为开发利器</h4>
+                <div class="news-feed__post-description">
+                    <p>你真正了解并会使用TDD吗？也许覆盖率测试不应该成为你的负担。</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./why-tdd-visiable.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">为什么要先Tasking并且可视化出来？</h4>
+                <div class="news-feed__post-description">
+                    <p>我已经很有经验了，在TDD时候，我脑海里已经知道去做哪些事情了，我觉得再去将Tasking一个一个写出来，有点多余了？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./is-testing-fix-code-error-or-not.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">写测试过程中要先解决编译错误吗？</h4>
+                <div class="news-feed__post-description">
+                    <p>编译错误总是限制IDE提示测试的代码，我们需要先解决掉编译的错误吗？</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="news-feed__inner">
+        <div class="news-feed__container">
+            <a class="news-feed__post"
+               href="./why-test-first.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">为什么一定要测试先行呢？</h4>
+                <div class="news-feed__post-description">
+                    <p>为什么一定要测试先行呢？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./tasking-to-test-case.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">一个Task应该对应多少个test case？</h4>
+                <div class="news-feed__post-description">
+                    <p>一个Task应该对应多少个test case？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./manage-test-granularity.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">Tasking粒度如何把控？</h4>
+                <div class="news-feed__post-description">
+                    <p>Tasking粒度如何把控？</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="news-feed__inner">
+        <div class="news-feed__container">
+            <a class="news-feed__post"
+               href="./task-vs-ac.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">Tasking产出的Task和AC有什么差别？</h4>
+                <div class="news-feed__post-description">
+                    <p>Tasking产出的Task和AC有什么差别？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./how-to-make-per-function-testable.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">如何做到每个功能可测试？</h4>
+                <div class="news-feed__post-description">
+                    <p>如何做到每个功能可测试？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./ui-do-tdd.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">UI 层如何TDD？</h4>
+                <div class="news-feed__post-description">
+                    <p>UI 层如何TDD？</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="news-feed__inner">
+        <div class="news-feed__container">
+            <a class="news-feed__post"
+               href="./how-to-do-testing-in-tech.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">技术上Tasking如何做？</h4>
+                <div class="news-feed__post-description">
+                    <p>技术上Tasking如何做？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./test-more-is-good-or-not.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">测试越多越好吗？</h4>
+                <div class="news-feed__post-description">
+                    <p>测试越多越好吗？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./check-test-quality.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">如何校验高质量的测试？</h4>
+                <div class="news-feed__post-description">
+                    <p>如何校验高质量的测试？</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="news-feed__inner">
+        <div class="news-feed__container">
+            <a class="news-feed__post"
+               href="./tdd-suitable-case.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">什么场景不适合TDD？</h4>
+                <div class="news-feed__post-description">
+                    <p>什么场景不适合TDD？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./how-to-deal-with-relationship-between-tdd-junit.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">TDD和单元测试的关系如何处理？</h4>
+                <div class="news-feed__post-description">
+                    <p>TDD和单元测试的关系如何处理？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./how-to-make-code-testable.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">如何让代码更可测试？</h4>
+                <div class="news-feed__post-description">
+                    <p>如何让代码更可测试？</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="news-feed__inner">
+        <div class="news-feed__container">
+            <a class="news-feed__post"
+               href="./how-to-write-test.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">如何写测试，有哪些步骤？</h4>
+                <div class="news-feed__post-description">
+                    <p>如何写测试，有哪些步骤？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./will-tdd-refactor-codes-usually.html">
+                <img
+                        src="../../img/tdd/default.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">TDD是否会频繁重构代码？</h4>
+                <div class="news-feed__post-description">
+                    <p>TDD是否会频繁重构代码？</p>
+                </div>
+            </a>
+            <a class="news-feed__post"
+               href="./what-is-tdd.html">
+                <img
+                        src="../../img/tdd/what-is-tdd/avatar.png"
+                        class="news-feed__post-image" loading="lazy" alt="" height="150" width="336">
+                <h4 class="news-feed__post-title">什么是测试驱动开发？</h4>
+                <div class="news-feed__post-description">
+                    <p>什么是测试驱动开发？</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

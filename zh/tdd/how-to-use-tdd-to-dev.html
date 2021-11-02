@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仅仅是覆盖率？如何让TDD成为开发利器</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../img/icon.png">
+    <link as="font" crossorigin="" href="../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='../subscribe/index.html'">Subscribe</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body">
+<div class="content-body-class">
+    <h1 class="hosting-pricing-plan-block__header">仅仅是覆盖率？如何让TDD成为开发利器</h1>
+    <div class="content-infos">
+        <h1 class="content-h1">你真正了解 TDD 吗？</h1>
+        <div class="content-words">
+            TDD(Test-driven Development)，是一种开发软件的手段，意在开发出整洁代码( Clean Code<sup>[1]</sup> )。它对某个业务包含以下的开发流程：
+        </div>
+        <div class="content-list">
+            1. 写出任务拆解文档(拆解设计思路、类与方法与变量的定义名称、覆盖所有业务场景的输入参数及预期输出)
+        </div>
+        <div class="content-words">
+            写出任务拆解文档后，开发者应该对文档中的测试(预言)递归按如下所示的方式<sup>[2]</sup>进行开发：
+        </div>
+        <div class="content-list">
+            1. 对某个预期写出失败的测试(红)
+        </div>
+        <div class="content-list">
+            2. 编写业务代码使测试通过(绿)
+        </div>
+        <div class="content-list">
+            3. 重构刚才编写的代码(蓝)
+        </div>
+
+        <div class="content-words">
+            例如：FizzBuzz
+        </div>
+        <div class="markdown">
+            你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。此时有100名学生在上课。游戏的规则是：<br/>
+            1. 让所有学生排成一队，然后按顺序报数。<br/>
+            2. 学生报数时，如果(a)所报数字是3的倍数或含有3，那么不能说该数字，而要说Fizz；(b)如果所报数字是5的倍数或含有5，那么要说Buzz；如果既满足a又满足b，则说FizzBuzz。<br/>
+            你希望有一个软件，能够自动打印一个100行的FizzBuzz列表。<br/>
+        </div>
+        <div class="content-words">
+            这个时候，开发者应该仔细分析需求然后给出一个任务拆解文档。例如：
+        </div>
+        <div class="markdown">
+            # Question<br/>
+            你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。此时有100名学生在上课。游戏的规则是：<br/>
+            1. 让所有学生拍成一队，然后按顺序报数。<br/>
+            2. 学生报数时，如果(a)所报数字是3的倍数或含有3，那么不能说该数字，而要说Fizz；(b)如果所报数字是5的倍数或含有5，那么要说Buzz；如果既满足a又满足b，则说FizzBuzz。<br/><br/>
+
+            # Sequence<br/>
+            1. 定义FizzBuzz类，定义成员变量String line<br/>
+            2. FizzBuzz类的构造方法接受int number参数，然后按照a、b的逻辑，将number转化成对应的字符串赋值给line<br/>
+            3. 重写FizzBuzz的toString方法直接返回line<br/>
+            4. 定义一个FizzBuzzLine类，定义print方法，可以返回100个元素的List, 从 1 至 100 循环构建FizzBuzz对象并将其装入List中<br/>
+            <br/>
+            # Tasking<br/>
+            - [ ] assert FizzBuzzLine.print().size() == 100<br/>
+            - [ ] assert new FizzBuzz(0).toString == "1"<br/>
+            - [ ] assert new FizzBuzz(2).toString == "Fizz"<br/>
+            - [ ] assert new FizzBuzz(4).toString == "Buzz"<br/>
+            - [ ] assert new FizzBuzz(14).toString == "FizzBuzz"<br/>
+            - [ ] assert new FizzBuzz(12).toString == "Fizz"<br/>
+            - [ ] assert new FizzBuzz(24).toString == "Buzz"<br/>
+            - [ ] assert new FizzBuzz(50).toString == "FizzBuzz"<br/>
+        </div>
+        <div class="content-words">
+            按照这个思路，不出意外，代码就从业务角度全覆盖了。接下来，就按照Tasking一个个红、绿、蓝重构就可以了。
+        </div>
+
+        <h1 class="content-h1">TDD与代码覆盖率</h1>
+        <div class="content-words">
+            很多项目都会有代码的覆盖率要求，有的甚至需要完全覆盖。很多软件工程师对此叫苦不迭，代码写完就开始补测试，补着补着耗费了大量的时间，难免还有遗漏，开始厌恶代码测试覆盖率的要求。其实真正的代码覆盖率要求是在业务的层面出发的。一个业务一定会有多种入参及其应该反馈的结果，这被称为happy
+            ending，但也应该有一些异常场景的反馈(tragic ending)。如果一个业务的happy ending和tragic
+            ending都被测试所覆盖，那这个业务代码就可以做到满覆盖率了。这样的代码的测试，应该是很干净简洁的对业务入参及出参的预期。那么如果后期需要重构或者修改需求，这些测试的变动直接就构成了代码的安全网<sup>[3]</sup>，为开发者接下来的变动保驾护航。
+        </div>
+        <h1 class="content-h1">概念要清楚</h1>
+        <div class="content-words">
+            好的设计，需要OOP化。要将业务提炼出概念，抽象成软件模型。上面的例子中，有FizzBuzzLine的概念，有FizzBuzz概念。FizzBuzzLine的用途就是打印体育老师需要的那个列表。FizzBuzz接受序号的参数，并将其自动转换为需要的字符串(line)。
+        </div>
+        <div class="content-words">
+            需要软件开发者熟悉设计模式和领域模型，或是在TDD的蓝流程中，积极相应重构。
+        </div>
+        <h1 class="content-h1">总结</h1>
+        <div class="content-words">
+            按照TDD的流程，思考业务、提炼模型与概念、任务拆解、设计Tasking、断言错误测试、让测试通过、重构代码，这样产出的代码拥有可靠性、可扩展性、健壮性、易读性、易重构性。TDD是软件开发都当之无愧的神兵利器。
+        </div>
+
+        <h1 class="content-h1">标注</h1>
+        <div class="content-list">
+            [1] Clean Code : 概念来自于<a
+                href="https://baike.baidu.com/item/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/9226259?fr=aladdin">代码整洁之道</a>
+        </div>
+        <div class="content-list">
+            [2] <a href="https://en.wikipedia.org/wiki/Six_Thinking_Hats">六顶思考帽</a>
+        </div>
+        <div class="content-list">
+            [3] <a href="../diary/safety-net.html">代码的安全网</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

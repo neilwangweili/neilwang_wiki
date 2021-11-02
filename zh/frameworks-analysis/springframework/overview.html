@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>概述</title>
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../../img/icon.png">
+    <link as="font" crossorigin="" href="../../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../../content-page.css" rel="stylesheet" type="text/css"/>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+        <button class="subscribe" onclick="location.href='../../subscribe/index.html'">Subscribe</button>
+    </h1>
+    <br/>
+</header>
+<body class="content-body">
+<div class="content-body-class">
+    <h1 class="hosting-pricing-plan-block__header">概述</h1>
+    <div class="content-infos">
+        <div class="content-h1">
+            什么是spring？
+        </div>
+        <div class="content-list">
+            1. 框架
+        </div>
+        <div class="content-list">
+            2. 生态
+            <div class="content-list">
+                扩展性，最终达到目的：<strong>为所欲为</strong>
+            </div>
+        </div>
+        <div class="content-h1">
+            spring组成部分
+        </div>
+        <div class="content-h2">
+            IOC （<strong>必须搞清楚</strong>）
+        </div>
+        <div class="content-list">
+            控制反转
+        </div>
+        <div class="content-list">
+            DI
+        </div>
+        <div class="content-h2">
+            IOC容器
+        </div>
+        <div class="content-h3">
+            过程
+        </div>
+        <div class="content-list">
+            1. 加载xml
+        </div>
+        <div class="content-list">
+            2. 解析xml
+        </div>
+        <div class="content-list">
+            3. 封装<span class="content-mention">BeanDefinition</span>
+        </div>
+        <div class="content-list">
+            4. 实例化
+        </div>
+        <div class="content-list">
+            5. 放入容器中
+        </div>
+        <div class="content-list">
+            6. 从容器中获取
+        </div>
+        <div class="content-h3">
+            概述
+        </div>
+        <div class="content-list">
+            1. 存储Bean的方式:Map，相当于使用key取出value
+            <div class="content-list">
+                1. key:string value:Object(by name)
+            </div>
+            <div class="content-list">
+                2. key:Class value:Object(by type)
+            </div>
+            <div class="content-list">
+                3. key:string value:ObjectFactory(静态工厂/对象工厂)
+            </div>
+            <div class="content-list">
+                4. key:string value:BeanDefinition
+            </div>
+            <div class="content-imports">
+                BeanDefinition:Bean定义信息，存放一个对象创建的所有信息。 xml、properties、yaml、注解-> BeanDefinition。 需要一个抽象层提供统一的解析处理
+                （定义规范，方便扩展 BeanDefinitionReader）
+            </div>
+        </div>
+        <div class="content-list">
+            2. BeanDefinitionReader:
+            <div class="content-list">
+                1. 统一的解析处理
+            </div>
+            <div class="content-list">
+                2. XmlBeanDefinitionReader、PropertiesBeanDefinitionReader、GroovyBeanDefinitionReader
+            </div>
+        </div>
+        <div class="content-list">
+            3. 实例化
+            <div class="content-list">
+                1. 构建方式：<strong>反射</strong>
+                <br/>好处：可以获得当前类中的所有注解、属性、方法、构造器
+            </div>
+            <div class="content-list">
+                2. scope有singleton、protocol、request、session，默认使用singleton
+                <div class="content-list">
+                    1. 获取Class
+                    <div class="content-list">
+                        1. 获取Class Class.forName("完全限定名")
+                    </div>
+                    <div class="content-list">
+                        2. Object.getClass()
+                    </div>
+                    <div class="content-list">
+                        3. 类名.class()
+                    </div>
+                </div>
+                <div class="content-list">
+                    2. Object obj = Clazz.getConstructor().getInstance()
+                </div>
+            </div>
+        </div>
+        <div class="content-list">
+            4. BeanFactory
+            <div class="content-list">
+                1. Bean工厂、整个容器的根接口、整个容器的入口
+            </div>
+            <div class="content-list">
+                2. 详见BeanFactory
+            </div>
+        </div>
+        <div class="content-list">
+            5. aware接口到底是什么？
+            <div class="content-list">
+                1. 标记超级接口，指示Spring容器可以通过回调样式方法将bean通知给特定的框架对象。 实际的方法签名是由各个子接口确定的，但通常应仅由一个接受单个参数的void返回方法组成
+            </div>
+            <div class="content-list">
+                2. 由invokeAwareMethods进行属性值的设置
+            </div>
+            <div class="content-list">
+                3. 用途：当Spring容器创建当Bean对象在进行具体操作时，如果需要容器的其他对象，此时可以将对象实现Aware接口，来满足当前的需要
+            </div>
+            <div class="markdown">
+                /**<br/>
+                * 对Aware类型进行判断，然后依次设定属性值<br/>
+                * @param beanName bean名称<br/>
+                * @param bean bean<br/>
+                */<br/>
+                private void invokeAwareMethods(String beanName, Object bean) {<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif (bean instanceof Aware) {<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif (bean instanceof
+                BeanNameAware) {<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp((BeanNameAware)
+                bean).setBeanName(beanName);<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif (bean instanceof
+                BeanClassLoaderAware) {<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspClassLoader
+                bcl = getBeanClassLoader();<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif
+                (bcl != null) {<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp((BeanClassLoaderAware)
+                bean).setBeanClassLoader(bcl);<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif (bean instanceof
+                BeanFactoryAware) {<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp((BeanFactoryAware)
+                bean).setBeanFactory(AbstractAutowireCapableBeanFactory.this);<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                }
+            </div>
+        </div>
+        <div class="content-list">
+            6. 创建对象的过程
+            <div class="content-list">
+                1. 实例化
+            </div>
+            <div class="content-list">
+                2. 在堆中开辟一块空间
+            </div>
+            <div class="content-list">
+                3. 对象的属性都是默认值
+            </div>
+            <div class="content-list">
+                4. 初始化
+            </div>
+            <div class="content-list">
+                5. 给属性设置值
+            </div>
+            <div class="content-list">
+                6. 填充属性
+            </div>
+            <div class="content-list">
+                7. [可选]设置Aware接口、Environment接口
+            </div>
+            <div class="content-list">
+                8. BeanPostProcessor.before(aop[AbstractAutoProxyCreator]继承了这个类)
+            </div>
+            <div class="content-list">
+                9. 执行初始化方法init-method
+            </div>
+            <div class="content-list">
+                10. BeanPostProcessor.after
+            </div>
+            <div class="content-list">
+                11. 完整对象创建完成，context.getBean()可以获取
+            </div>
+        </div>
+        <div class="content-list">
+            7. SpringBean
+            <div class="content-list">
+                1. 分类
+                <div class="content-list">
+                    1. 普通对象(我们自定义的需要的对象)
+                </div>
+                <div class="content-list">
+                    1. 容器对象(容器内置的对象,Spring需要的对象 见refreshBeanFactory[创建工厂]、invokeBeanFactoryPostProcessors[aop容器也在这里创建的])
+                    <div class="markdown">
+                        @Override<br/>
+                        protected final void refreshBeanFactory() throws BeansException {<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif (hasBeanFactory()) {<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdestroyBeans();<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcloseBeanFactory();<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsptry {<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp//AbstractRefreshableApplicationContent#createBeanFactory()创建DefaultListableBeanFactory对象工厂<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDefaultListableBeanFactory
+                        beanFactory = createBeanFactory();<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp//对BeanFactory设置序列化id<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbeanFactory.setSerializationId(getId());<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp//定制化BeanFactory，例如lookup-method、replace-method、是否允许被重写等<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcustomizeBeanFactory(beanFactory);<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp//加载BeanDefinitions<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsploadBeanDefinitions(beanFactory);<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp//构建完成<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspthis.beanFactory
+                        = beanFactory;<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspcatch (IOException ex) {<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspthrow new
+                        ApplicationContextException("I/O error parsing bean definition source for " + getDisplayName(),
+                        ex);<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                        }
+                    </div>
+                    <div class="markdown">
+                        /**<br/>
+                        * 将所有BeanFactoryPostProcessor实例化<br/>
+                        * Instantiate and invoke all registered BeanFactoryPostProcessor beans,<br/>
+                        * respecting explicit order if given.<br/>
+                        * <p>Must be called before singleton instantiation.<br/>
+                        */<br/>
+                        protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory)
+                        {<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory,
+                        getBeanFactoryPostProcessors());<br/>
+                        <br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp// Detect a LoadTimeWeaver and prepare for weaving, if
+                        found in the meantime<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp// (e.g. through an @Bean method registered by
+                        ConfigurationClassPostProcessor)<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif (!NativeDetector.inNativeImage() &&
+                        beanFactory.getTempClassLoader() == null &&
+                        beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) {<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbeanFactory.addBeanPostProcessor(new
+                        LoadTimeWeaverAwareProcessor(beanFactory));<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspbeanFactory.setTempClassLoader(new
+                        ContextTypeMatchClassLoader(beanFactory.getBeanClassLoader()));<br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}<br/>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="content-list">
+                8. 在不同的阶段要处理不同的工作，应该怎么办？ <strong>观察者模式：监听器、监听事件、多播器（广播器）</strong>
+            </div>
+        </div>
+        <div class="content-h3">
+            在程序运行过程中，我们该如何改变bean的信息？
+        </div>
+        <div class="content-list">
+            1. BeanFactoryPostProcessor 后置处理增强器-增强BeanDefinition信息
+            <div class="content-imports">
+                区别于BeanPostProcessor：增强bean信息<br/>eg. PlaceHolderConfigurerSupport : spEl表达式的解析
+            </div>
+        </div>
+        <div class="content-h3">
+            一些重要接口
+        </div>
+        <div class="content-list">
+            1. BeanFactory(必须遵循完整的创建流程，由spring管控)
+        </div>
+        <div class="content-list">
+            2. Aware
+        </div>
+        <div class="content-list">
+            3. BeanDefinition
+        </div>
+        <div class="content-list">
+            4. BeanDefinitionReader
+        </div>
+        <div class="content-list">
+            5. BeanFactoryPostProcessor
+        </div>
+        <div class="content-list">
+            6. BeanPostProcessor
+        </div>
+        <div class="content-list">
+            7. Environment
+            <div class="content-list">
+                1. StandardEnvironment 存放系统中的某些值、环境变量值
+                <div class="content-list">
+                    1. 当完成整个容器的创建时，就会将系统中的某些值、环境变量值放入容器之中
+                </div>
+                <div class="content-list">
+                    2. System.getEnv()
+                </div>
+                <div class="content-list">
+                    3. System.getProperties()
+                </div>
+            </div>
+        </div>
+        <div class="content-list">
+            8. BeanDefinitionRegistry(对定义的Bean信息进行CRUD操作)
+        </div>
+        <div class="content-list">
+            9. FactoryBean(使用getObject()就可以返回具体对象，整个对象的创建过程由用户自己控制，更加灵活)
+            <div class="content-list">
+                getObject()
+            </div>
+            <div class="content-list">
+                isSingleTon()
+            </div>
+            <div class="content-list">
+                getObjectType()
+            </div>
+            <div class="content-list">
+                spring先去容器中获取，若获取不到，则调用getObject()去获取，这个不会走spring正常生命周期
+            </div>
+        </div>
+        <div class="content-h2">
+            aop
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

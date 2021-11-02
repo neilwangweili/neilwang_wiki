@@ -1,0 +1,395 @@
+<html dir="ltr" class="dj_webkit dj_safari dj_contentbox"><!--<![endif]-->
+<head>
+    <title>订阅</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="1200" property="og:image:width"/>
+    <meta content="630" property="og:image:height"/>
+    <link rel="icon" href="../../img/icon.png">
+    <link as="font" crossorigin="" href="../../Agrandir-Heavy.2fd076131b76.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Bold.5adcade67872.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-regular.899c8f78ce65.woff2"
+          rel="preload" type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../Agrandir-Regular.11a4ceb99823.woff2" rel="preload"
+          type="font/woff2"/>
+    <link as="font" crossorigin="" href="../../source-sans-pro-v14-latin-600.c85615b29630.woff2" rel="preload"
+          type="font/woff2"/>
+    <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
+    <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
+    <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">/* Forms */
+
+    .field-group {
+        position: relative;
+        margin: 3px 0 12px 0;
+        overflow: hidden;
+        background: transparent !important;
+    }
+
+    input, textarea, select {
+        display: block;
+        margin: 0;
+        padding: 10px;
+        background: #fff;
+        width: 100%;
+        border: 2px solid #d0d0d0 !important;
+        border-radius: 3px;
+        -webkit-appearance: none;
+    }
+
+    .field-group input, select, textarea {
+        font-size: 25px;
+    }
+
+    .field-group.error > input,
+    .field-group.error > select,
+    .field-group.error textarea {
+        border-color: #e85c41 !important;
+    }
+
+    textarea {
+        font: 14px/18px 'Helvetica', Arial, sans-serif;
+        width: 100%;
+        height: 150px;
+        overflow: auto;
+    }
+
+    html[dir="rtl"] select {
+        background-position: 14px -295px;
+    }
+
+    /* Firefox always displays native select arrow button, so hide the background image arrow. */
+    @-moz-document url-prefix() {
+        select {
+            padding: 8px;
+            background-position: -99px 0 !important;
+            -moz-appearance: none;
+        }
+    }
+
+    input:focus, textarea:focus, select:focus, .focused-field .subfields {
+        border-color: #5d5d5d !important;
+        outline: none;
+    }
+
+    /* Prevent Chrome's autofill yellow box shadow */
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    }
+
+    .feedback br {
+        display: none;
+    }
+
+    .feedback div {
+        font: 14px/20px 'Helvetica', Arial, sans-serif !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .indicates-required {
+        text-align: right;
+    }
+
+    .indicates-required span {
+        font-size: 150%;
+        font-weight: bold;
+        display: inline !important;
+    }
+
+
+    /* Groups, checkboxes, radio buttons */
+    ul.interestgroup_field li,
+    ul.unsub-options li,
+    .checkbox input, .radio input {
+        width: auto !important;
+        display: inline-block;
+        margin-right: 5px;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+    }
+
+    #archive-list li {
+        display: block;
+        list-style: none;
+        margin: 0;
+        padding: 6px 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    input, textarea, select {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .field-shift {
+        left: -9999px;
+        position: absolute;
+    }
+
+    html[dir="rtl"] .field-shift {
+        right: -9999px;
+        left: auto;
+    }
+
+
+    /* Image replacement for checkbox and radio buttons. */
+    /* Placing in @media block forces browsers that don't support :checked to fall back to native inputs. */
+    @media only screen {
+        .mergeRow-radio .field-group, .mergeRow-interests-checkboxes .field-group {
+            margin: 0 -6px 11px -6px;
+        }
+
+        /* Position and hide the real checkboxes and radio buttons */
+        .checkbox input, .radio input {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            opacity: 0;
+        }
+
+        .checkbox input + span, .radio input + span {
+            display: block;
+            border-radius: 3px;
+            padding: 6px 6px 6px 38px;
+        }
+
+        .checkbox:hover span,
+        .checkbox input:focus + span,
+        .radio:hover span,
+        .radio input:focus + span {
+            background: rgba(0, 0, 0, .05);
+        }
+
+        /* Insert a pseudo element inside each label with a background sprite.  */
+        .checkbox input + span:before, .radio input + span:before {
+            display: block;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 24px;
+            height: 24px;
+            content: " ";
+            vertical-align: top;
+        }
+
+        /* Position the background sprite based on state of checkbox/radio. */
+        .radio input:focus + span:before {
+            background-position: 0 -30px;
+        }
+
+        .radio input:checked + span:before {
+            background-position: 0 -60px;
+        }
+
+        .radio input:checked:focus + span:before {
+            background-position: -0 -90px;
+        }
+
+        .checkbox input + span:before {
+            background-position: 0 -120px;
+        }
+
+        .checkbox input:focus + span:before {
+            background-position: 0 -150px;
+        }
+
+        .checkbox input:checked + span:before {
+            background-position: 0 -180px;
+        }
+
+        .checkbox input:checked:focus + span:before {
+            background-position: 0 -210px;
+        }
+
+        /* Right-to-left checkbox/radio modifications */
+        html[dir="rtl"] .checkbox input + span:before, html[dir="rtl"] .radio input + span:before {
+            left: auto;
+            right: 0;
+        }
+
+        html[dir="rtl"] .checkbox input + span, html[dir="rtl"] .radio input + span {
+            padding: 6px 38px 6px 6px;
+        }
+    }
+
+    .input {
+        background-color: transparent;
+        border: 5px solid black;
+        border-radius: 30px;
+        text-align: center;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 90%;
+        height: 60px;
+    }
+
+    </style>
+    <style type="text/css">
+
+        .wrapper {
+            width: 600px;
+            margin: 0 auto 10px auto;
+            text-align: left;
+        }
+
+        .formEmailButton span {
+            display: inline;
+            font-family: 'Helvetica', Arial, sans-serif;
+            text-decoration: none;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16px;
+            line-height: 42px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .rounded6 {
+            border-radius: 6px;
+        }
+
+        .profile-list li {
+            display: block;
+            margin: 0;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        label {
+            line-height: 150%;
+            font-size: 16px;
+            color: #5d5d5d;
+        }
+
+        .field-group input, select, textarea {
+            color: #5d5d5d !important;
+        }
+
+        .asterisk {
+            color: #cc6600;
+            font-size: 20px;
+        }
+
+        label .asterisk {
+            visibility: hidden;
+        }
+
+        .indicates-required {
+            display: none;
+        }
+
+        @media (max-width: 620px) {
+            .wrapper {
+                width: auto !important;
+                max-width: 600px !important;
+                padding: 0 10px;
+            }
+
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            let callback = getQueryVariable("callback");
+            if (callback === "true") {
+                window.alert("订阅成功！");
+                setTimeout(() => window.location.href = "../../index.html", 500);
+            }
+        }
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return (false);
+        }
+    </script>
+</head>
+<header class="site-header">
+    <br/>
+    <h1 style="margin: 0 auto;text-align: left;margin: 0 50px;color: white;font-size: 3.5rem">
+        <img src="../../svg/icon-white.svg" height="80" width="80"/>&nbsp;&nbsp;Neil's wiki
+    </h1>
+    <br/>
+</header>
+<br/>
+<body class="content-body">
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<div id="mc_embed_signup" class="content-body-class">
+    <div class="wrapper rounded6" id="templateContainer">
+        <form action="https://wiki.us1.list-manage.com/subscribe/post?u=7fb0cdff945d40f65bc41e669&amp;id=64248ffd53"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+              target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+                <h1 class="hosting-pricing-plan-block__header">订阅</h1>
+                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                <div class="mc-field-group">
+                    <label for="mce-FNAME" class="content-h1">您的姓名 </label>
+                    <div class="field-group">
+                        <input class="input" style="border-radius: 50px;" type="text" value="" name="FNAME" id="mce-FNAME">
+                    </div>
+                </div>
+                <div class="mc-field-group">
+                    <label for="mce-EMAIL" class="content-h1">您的电子邮箱地址 <span class="asterisk">*</span></label>
+                    <div class="field-group">
+                        <input class="input required email" style="border-radius: 50px;" type="email" value="" name="EMAIL" id="mce-EMAIL">
+                    </div>
+                </div>
+                <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                                                                                          name="b_7fb0cdff945d40f65bc41e669_64248ffd53"
+                                                                                          tabindex="-1" value=""></div>
+                <div class="content-words">
+                    我们将会在发布新文章后第一时间通过邮件的形式告知您。
+                </div>
+                <div class="back-to-home-page">
+                    <input type="submit" value="Subscribe" name="subscribe" style="width: 50px;border-radius: 10px;margin: 40px auto 0;font-size: 1rem;
+height: 50px;font-weight: bolder;background-color: black"
+                           id="mc-embedded-subscribe"
+                           class="button">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>(function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+    fnames[3] = 'ADDRESS';
+    ftypes[3] = 'address';
+    fnames[5] = 'BIRTHDAY';
+    ftypes[5] = 'birthday';
+    fnames[6] = 'PHONE';
+    ftypes[6] = 'text';
+}(jQuery));
+var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+</body>
+</html>
+<div class="back-to-home-page">
+    <a class="call-to-action__link button" href="/">返回首页</a>
+</div>

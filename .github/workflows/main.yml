@@ -41,6 +41,7 @@ jobs:
           TARGET_MACHINE: ${{ secrets.TARGET_MACHINE }}
           DOCKER_REPO_NAME: ${{secrets.DOCKER_REPO_NAME}}
         run: |
+          mkdir -p /etc/docker/
           sudo tee /etc/docker/daemon.json <<- EOF
                       {
                         "insecure-registries": [

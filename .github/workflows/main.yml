@@ -16,7 +16,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
         run: |
-          sudo tee /etc/docker/daemon.json <<- 'EOF'
+          sudo tee /etc/docker/daemon.json <<- EOF
             {
               "insecure-registries": [
                 ""$DOCKER_ADDRESS""
@@ -31,8 +31,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: deploy
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
         run: |
-          tee /home/id_rsa <<-'EOF'
-          {{secrets.DEPLOY_KEY}}
+          sudo tee /home/id_rsa <<-EOF
+          "$DEPLOY_KEY"
           EOF
           sh ./scripts/deploy.sh

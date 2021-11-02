@@ -11,8 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build
+      - shell: bash
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
         run: |
-          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} {{secrets.DOCKER_ADDRESS}}
+          docker login --username="$DOCKER_USERNAME" --password="$DOCKER_PASSWORD" "$DOCKER_ADDRESS"
           sh ./scripts/build.sh
   deploy:
     runs-on: ubuntu-latest

@@ -27,9 +27,16 @@ jobs:
           sudo service docker restart
           docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD $DOCKER_ADDRESS
           docker build -t $DOCKER_ADDRESS/$DOCKER_REPO_NAME . && docker push $DOCKER_ADDRESS/$DOCKER_REPO_NAME
-  deploy:
+  check:
     runs-on: ubuntu-latest
     needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: check
+        run: echo hello
+  deploy:
+    runs-on: ubuntu-latest
+    needs: check
     steps:
       - uses: actions/checkout@v2
       - name: deploy

@@ -23,6 +23,7 @@ jobs:
               ]
             }
           EOF
+          sudo service docker restart
           docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD $DOCKER_ADDRESS
           docker build -t $DOCKER_ADDRESS/neilwang.wiki:latest . && docker push $DOCKER_ADDRESS/neilwang.wiki:latest
   deploy:

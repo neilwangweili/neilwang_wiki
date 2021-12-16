@@ -19,6 +19,8 @@
     <link href="../../common.0016184b0568.css" rel="stylesheet" type="text/css"/>
     <link href="../../home.a12d472bcf09.css" rel="stylesheet" type="text/css"/>
     <link href="../content-page.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad: true});</script>
 </head>
 <header class="site-header">
     <br/>
@@ -70,6 +72,105 @@
             <div class="content-list">
                 6. 一个项目使用统一的模型，还是分解为不同的模型？
             </div>
+        </div>
+        <div class="content-h2">
+            1. What is DDD ?
+        </div>
+        <div class="content-h3">
+            Information
+        </div>
+        <div class="content-words">
+            软件开发通常是真实世界中已存在流程的自动化，或为真实业务问题提供的解决方案。软件的领域是<b>需要自动化的业务或真实世界的问题</b>。从一开始，我们就必须明白软件起源于领域并与其领域密切相关。
+        </div>
+        <div class="content-words">
+            创建一个好的软件，必须要知道软件究竟是什么。在充分了解金融业务是什么之前，是做不出好的银行业软件系统的。
+        </div>
+        <div class="content-words">
+            银行的从业者最清楚银行业业务，他们知道所有的细节、困难、可能出现的问题、业务规则。这些就是我们永远的起点：<b>领域</b>。软件的最终目的是增进一个<b>特定</b>的领域。为了达到这个目的，软件需要与它服务的领域和谐共处，否则就会导致很大的混乱。
+        </div>
+        <div class="content-words">
+            如何使软件与领域和谐共处？最佳方式是让软件成为其领域的映射。软件需要包含领域里的重要核心概念和元素，并精准实现其关系。也就是说，软件需要对领域进行建模。对银行业业务不了解的人也可以阅读此代码学习大量知识。
+        </div>
+        <div class="content-words">
+            <b>对软件进行领域建模需要去产出一个领域模型，一个经过严格组织并选择性抽象的知识。</b>
+        </div>
+        <div class="content-words">
+            模型是对目标领域内部的展现方式，会贯穿设计与开发的全过程。我们需要组织信息并将其系统化、分割成小一点的信息块，再将信息块放入逻辑块中，进行分离关注。
+        </div>
+        <div class="content-words">
+            模型需要更精准、更完整、没有二义性，我们需要模型来交流。
+        </div>
+        <div class="content-words">
+            瀑布设计方法的缺点是分析人员与开发人员间信息的不可见，另一种方法叫做敏捷，深入了解客户领域及需求变化，持续产出客户需要的软件。但有过度工程、过度设计的可能性。
+        </div>
+        <div class="content-h3">
+            Construct domain knowledge
+        </div>
+        <div class="content-h4">
+            范例
+        </div>
+        <div class="content-imports">
+            在给定的时刻，空中会有成千上万的飞机。它们会朝着各自的目的地按照路线飞行，很重要的事是需要确保它们不会在空中碰撞。我们不会试图描述一个完整的交通系统，而只是关注其中的一个小小的子集：<b>飞行监控系统</b>。<br/>
+            飞行监控系统会跟踪指定区域内的任意航班，判断班机是否遵照预定航线，以及是否可能碰撞。
+        </div>
+        <div class="content-h4">
+            分析
+        </div>
+        <div class="content-words">
+            软件开发应从<b>理解领域</b>开始。
+        </div>
+        <div class="content-words">
+            本例就是从空中监控系统开始。控制人员是这个领域的专家，但他们并不是软件领域的专家，你不能期望他们会给你提供一个关于他们问题的完整描述。
+        </div>
+        <div class="content-words">
+            你听到的很可能是例如<u>飞机起飞、着陆、碰撞的危险、着陆</u>等杂乱无章的知识。
+        </div>
+        <div class="content-words">
+            为了从看似杂乱无章的信息中寻找规律，我们需要从某个地方开始。
+        </div>
+        <div class="content-h5">
+            Step 1
+        </div>
+        <div class="content-words">
+            控制人员和你都认为飞行器必须拥有出发机场和目的机场：
+        </div>
+        <div class="mermaid middle">
+            graph LR
+            A(Departure) --> B(Aircraft)
+            B --> C(Destination)
+        </div>
+        <div class="content-h5">
+            Step 2
+        </div>
+        <div class="content-words">
+            那么，飞机在飞行中时，发生了什么？控制人员说，会给每架飞机指派一个飞行计划，描述飞行的全过程。飞行计划是飞机在空中必须遵循的路径，也就是路线（Route）。这是一个重要的概念，其将出发机场和目的机场关联起来。所以将路线关联而不是将飞机关联似乎更合理与自然：
+        </div>
+        <div class="mermaid middle">
+            graph LR
+            A(Aircraft) --> B(Route)
+            B --> C(Departure)
+            B --> D(Destination)
+        </div>
+        <div class="content-h5">
+            Step 3
+        </div>
+        <div class="content-words">
+            进一步交流后，你发现路线是由小的区间段组成的曲线，所以路线可以被考虑成一系列的方位点：
+        </div>
+        <div class="mermaid middle">
+            flowchart LR
+            A(Aircraft)		-->			B(Route)
+            B				-- * --o 	C(Fix)
+            C 				--> 		D(2DPoint)
+        </div>
+        <div class="content-h4">
+            本质
+        </div>
+        <div class="content-words">
+            本质上，你和领域专家交谈时，你们在交换知识。你在交谈中学习、理解领域，通过正确的问题正确地处理得到的信息。这样的模型一开始不能保证正确，但它是个开始点。
+        </div>
+        <div class="content-words">
+            通常软件领域与领域专家人员会进行很长时间的讨论来交换知识。建立早期模型并验证其是否可以工作，修改模型就不再是开发人员的单项联系，而是存在反馈。这帮助我们更清晰、准确地理解领域。这样的模型体现两个专业领域的交汇，很消耗时间，但软件的最终目的是解决真实领域的业务问题，所以它必须与领域完美结合。
         </div>
     </div>
 </div>

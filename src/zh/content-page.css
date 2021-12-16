@@ -125,6 +125,30 @@
     padding: 10px 0 10px 20px;
 }
 
+table.content-table {
+    font-size: 11px;
+    color: #333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+table.content-table th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+
+table.content-table td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+}
+
 .content-imports {
     color: #5959c0;
     font-style: italic;

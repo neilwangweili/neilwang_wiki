@@ -39,6 +39,9 @@
 <div class="content-body-class">
     <h1 class="hosting-pricing-plan-block__header">领域驱动设计</h1>
     <div class="content-infos">
+        <div class="content-addition">
+            <span>本文基于<a href="https://github.com/VWWL/library/blob/main/计算机/软件模型/领域驱动设计.pdf">《领域驱动设计精简版》</a>整理，侵删。感谢InfoQ在软件之路上的贡献！</span><br/>
+        </div>
         <div class="content-h2">
             0. Preface
         </div>
@@ -193,7 +196,8 @@
         </div>
         <div class="content-words">
             领域驱动设计的一个核心的原则是使用一种基于模型的语言。因为模型是软件满足
-            领域的共同点，它很适合作为这种通用语言的构造基础。使用模型作为语言的主干，并要求团队在交流时使用一致的语言，在代码中也是这样。这就是通用语言（Ubiquitous Language）。
+            领域的共同点，它很适合作为这种通用语言的构造基础。使用模型作为语言的主干，并要求团队在交流时使用一致的语言，在代码中也是这样。这就是通用语言（Ubiquitous Language）<sup><a
+                href="#1" id="source1">[1]</a></sup>。
         </div>
         <div class="content-words">
             这种语言的形成并非一日之功，需要展开艰难的工作，确保发现语言的那些关键元素。我们需要发现定义领域和模型的关键概念，描述他们的适当用词，并开始使用它们。它们当中的一些概念很容易被发现，但另一些则不然。
@@ -222,7 +226,7 @@
         <div class="middle" id="diagram-2"></div>
         <div class="content-words">
             UML很适合构建模型，它也真的是一种很好的记录关键概念及其关系的工具。但UML图一单复杂，即使是软件专家也很难阅读。所以，我们可以使用项目文档，通过小的图对模型的沟通，每一张小图包含了模型的一个子集，就像是分离关注<sup><a
-                href="#1">[1]</a></sup>。这些文档甚至可以手绘——因为它达到比较稳定的状态前会发生多次变化。
+                href="#2" id="source2">[2]</a></sup>。这些文档甚至可以手绘——因为它达到比较稳定的状态前会发生多次变化。
         </div>
         <div class="content-words">
             <b>大图混乱，并不能传达比小图的集合更好理解，当然，也可以使用优秀的代码进行沟通（代码即注释），通过测试断言来描述行为。</b>
@@ -303,7 +307,8 @@
             我们创建软件应用时，这个应用很大一部分没有直接与领域关联，但它们是基础设施的一部分或是为 软件本身提供服务的。最好能让应用中的领域部分与其他部分相比保持尽可能小（也不是掺杂在一起）。
         </div>
         <div class="content-words">
-            在面向对象程序中，UI界面、数据库等支持性代码经常被直接写到业务对象中，附加的业务逻辑被嵌入到UI组件和数据库脚本的行为中，这样做可以让事情快速工作起来。但是，当领域相关的代码被混入其他层时，要阅读和思考这些代码也变得极其困难。表面上是对UI的修改，却变成了对业务逻辑的修改。对业务规则的变更又需要跟踪其他代码。实现都粘连在了一起，模型驱动对象
+            在面向对象程序中，UI界面、数据库等支持性代码经常被直接写到业务对象中，附加的业务逻辑被嵌入到UI组件和数据库脚本的行为中，这样做可以让事情快速工作起来。但是，当领域相关的代码被混入其他层时，要阅读和思考这些代码也变得极其困难。表面上是对UI的修改，却变成了对业务逻辑的修改。对业务规则的变更又需要跟踪其他代码。实现都粘连在了一起，模型驱动对象<sup><a
+                href="#3" id="source3">[3]</a></sup>
             (model-driven objects) 于是变得不再可行，也很难展开自动化测试。<b>所以对于所有活动中包含的全部技术和逻辑而言，程序必须保持简单，否则就会难以理解。</b>
         </div>
         <div class="content-words">
@@ -437,8 +442,10 @@
         </div>
         <div class="content-words">
             软件普遍上应该具有高内聚和低耦合，它也可以被应用于模块级别。推荐的做法是将高关联度的类分组到一个模块，以提供尽大的内聚性。最常见的内聚是通信性内聚（Communicational
-            cohesion）和功能性内聚（Functional
-            cohesion）。在模块中的部件操作相同相同的数据时，可以得到通信性内聚。在模块中的部件协同工作以完成定义好的任务时，可以得到功能性内聚。功能性内聚是最佳的内聚模型。
+            cohesion）<sup><a
+                href="#4" id="source4">[4]</a></sup>和功能性内聚（Functional
+            cohesion）<sup><a
+                href="#5" id="source5">[5]</a></sup>。在模块中的部件操作相同相同的数据时，可以得到通信性内聚。在模块中的部件协同工作以完成定义好的任务时，可以得到功能性内聚。功能性内聚是最佳的内聚模型。
         </div>
         <div class="mermaid middle">
             flowchart LR
@@ -494,7 +501,7 @@
         <div class="content-h4">
             Aggregate
         </div>
-        <div class="content-h4">
+        <div class="content-words">
             无论设计时有多少考虑，我们都会看见一个模型中很多对象会与其他对象发生关联，进而形成复杂的关系网。对模型中每一个可导航的关联而言，都应该有对应的软件机制加强它。来自模型的挑战常常不是让它们尽量完整，而是让它们尽量简单和容易理解。这就意味着，我们需要对模型中的关系进行消减和简化。
         </div>
         <div class="content-h5">
@@ -636,10 +643,77 @@
         <div class="content-words">
             <b>需要注意的是，资源库的实现可能会非常像是基础设施，然而资源库的接口却是纯粹的领域模型。</b>
         </div>
+        <div class="content-h2">
+            4. Refactoring for deeper understanding
+        </div>
+        <div class="content-h3">
+            Continuous Refactor
+        </div>
+        <div class="content-words">
+            模型必须与源自的领域紧密相连。代码设计应该围绕模型展开并改善。脱离了模型的设计会导致软件无法真实表达它所服务的领域，很可能会得不到期望的行为。
+            建模如果得不到设计的反馈或者缺少了开发人员的参与，会导致必须实现模型的人很难理解它，并且对于所用的技术而言可能不太适合。
+        </div>
+        <div class="content-words">
+            在设计和开发过程中，时不时停下来查看一下代码意味着到了重构的时间。重构通常是非常谨慎的，按照小幅且可控的步骤进行，这样我们就不会破坏功能或者引入一些 bug 了。
+            毕竟，重构的目的是让代码更好而不是更坏。自动化测试可以为我们提供很大帮助，确保我们没有破坏任何事情<sup><a
+                href="#6" id="source6">[6]</a></sup>。
+        </div>
+        <div class="content-words">
+            还有另一种类型的重构，与领域和它的模型相关。有时会对领域有新的理解，有些事物变得更加清晰，或者发现了两个元素间的关系。所有的这些会通过重构工作被包括到设计中。得到容易阅读和理解的、有表现力的代码是非常重要的。通过阅读代码，一个人应该不仅仅能够了解代码是做什么的，同时了解它为什么要这样做。只有这样才能让代码真正捕获模型的实质。
+        </div>
+        <div class="content-words">
+            与一致的语言一道使用经过验证的基础构造块，这样做会使得开发工作在某种程度 上保持明智。这带来了一个挑战：如何发现一个深刻的模型（Incisive
+            model），这个模型能够捕获到领域专家头脑中微妙的概念，并且以此来驱动实际的设计。一个忽略肤浅 的表面内容且捕捉到基本内容的模型是一个深层模型（Deep
+            model）。这会让软件更加与领域专家的思路合拍，也更能满足用户的需要。
+        </div>
+        <div class="content-words">
+            从传统意义上讲，重构描述的是出于技术动机的代码转换。重构的动机同样可以出于对领域的深入理解，以及对模型及其代码表达进行相应的改进。
+        </div>
+        <div class="content-words">
+            除非使用迭代的重构过程，加上领域专家和开发人员一起密切关注对领域的学习， 否则一个复杂成熟的领域模式是很难开发出来的。
+        </div>
+        <div class="content-h3">
+            Highlight key concepts
+        </div>
+        <div class="content-words">
+            我们会为模型添加新的概念和抽象，
+            然后对基于模型的设计做重构。每一次改进都会让设计更加清晰，从而带来突破。突破常包括思维上的变化，如同我们理解模型一样。它也是项目中取得巨大进展的源泉，然而它也有一些缺点。突破可能隐含了大量的重构。这意味着需要时间和资源，大量的重构也会在应用中引入行为上的变化。
+        </div>
+        <div class="content-words">
+            为达到一次突破，我们需要将隐含的概念显现出来。当我们跟领域专家交谈时，我们交换了大量的想法和知识。某些概念成为了通用语言的一部分，但也有一些概念在起初未被重视。在改进设计的过程中，我们发现这些概念在设计中担任了重要的角色。因此我们需要将这些隐含的概念显现出来。我们应该为它们创建类和关系。当这种情况出现时，我们就拥有了突破的机会。
+        </div>
+        <div class="content-words">
+            隐含的概念可能不会仅于此。如果它们是领域概念，它们应该被引入到模型和设计中。我们应该如何识别它们呢?
+        </div>
+        <div class="content-words">
+            第一种发现隐含概念的方式是倾听用到的语言。我们在建模和设计过程中使用的语言中包含了大量关于领域的信息。起初可能不会很多，或者某些信息没有被正确地使用。某些概念可能无法被完全理解，甚至理解是完全错误的。
+            这是在学习一个新的领域所必须经历的一部分。但因为我们建造了我们的通用语言，关键概念会被加入其中。我们应该从那里开始查找隐含的概念。
+        </div>
+        <div class="content-words">
+            有时设计的一些部分可能不会那么清晰，有一组关系让路径的计算变得难以进行，
+            或者其过程会复杂到难以理解。这些部分在设计中显得十分笨拙，但这也是寻找隐藏的概念的绝佳之所。可能我们错过了什么。如果某个关键概念在破解谜团时缺失了，其他的事物就不得不替代它完成它的功能。这会让某些对象变胖。设计的清晰度受到了损害。努力寻找是否有缺失的概念，如果找到一个，就将它显现出来。对设计做重构，让它更简单、更具灵活性。
+        </div>
+        <div class="content-words">
+            当我们构建知识时很可能会遇到矛盾的情况，一个需求可能看上去与另一个需求矛盾。有一些矛盾其实不是真正的矛盾，只是因为看待同一事物的方式不同，或者只是因为在讲解时缺乏精确度造成的。我们应该努力去解决矛盾，有时这确实会帮助我们发现重要的概念。即使并没有发现它们，能够保持所有事物清晰也是很重要的。
+        </div>
+        <div class="content-words">
+            挖掘模型概念的另一种明显的方式是使用领域文献。现在有众多为几乎任何可能的主题而编写的书，它们包含了大量关于特定领域的知识。这些书通常不包含所介绍领域
+            的模型，它们包含的信息需要进一步处理、提炼和改进。但是，在书中发现的信息是有价值的，会给我们提供对领域的深层视图。
+        </div>
+        <div class="content-words">
+            在将概念显现出来时，还有其他一些非常有用的概念：约束、过程和规约。约束是一个很简单的表达不变量的方式。无论对象的数据如何变化，不变量都要得到保持。简单的实现方式是将不变量的逻辑放在一个约束中。
+        </div>
 
 
         <div class="content-addition">
-            <span id="1">[1] <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">https://en.wikipedia.org/wiki/Separation_of_concerns</a></span><br/>
+            <span id="1"><a href="#source1"> [1]</a> <a href="https://martinfowler.com/bliki/UbiquitousLanguage.html">https://martinfowler.com/bliki/UbiquitousLanguage.html</a></span><br/>
+            <span id="2"><a href="#source2"> [2]</a> <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">https://en.wikipedia.org/wiki/Separation_of_concerns</a></span><br/>
+            <span id="3"><a href="#source3"> [3]</a> <a href="https://en.wikipedia.org/wiki/Model-driven_architecture">https://en.wikipedia.org/wiki/Model-driven_architecture</a></span><br/>
+            <span id="4"><a href="#source4"> [4]</a> <a
+                    href="https://www.chegg.com/learn/computer-science/computer-software/communicational-cohesion">https://www.chegg.com/learn/computer-science/computer-software/communicational-cohesion</a></span><br/>
+            <span id="5"><a href="#source5"> [5]</a> <a
+                    href="https://www.oreilly.com/library/view/software-architects-handbook/9781788624060/f5a37a6f-dea3-4768-9f28-62e8e5f4d6ff.xhtml">https://www.oreilly.com/library/view/software-architects-handbook/9781788624060/f5a37a6f-dea3-4768-9f28-62e8e5f4d6ff.xhtml</a></span><br/>
+            <span id="6"><a href="#source6"> [6]</a> <a href="../tdd/">详见TDD</a></span><br/>
         </div>
     </div>
 </div>

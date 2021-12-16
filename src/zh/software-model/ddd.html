@@ -21,6 +21,11 @@
     <link href="../content-page.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad: true});</script>
+    <script src="../../../bower_components/bower-webfontloader/webfont.js"></script>
+    <script src="../../../bower_components/snap.svg/dist/snap.svg-min.js"></script>
+    <script src="../../../bower_components/underscore/underscore-min.js"></script>
+    <script src="../../../bower_components/js-sequence-diagrams/dist/sequence-diagram-min.js"></script>
+    <link href="../../../bower_components/js-sequence-diagrams/dist/sequence-diagram-min.css" rel="stylesheet"/>
 </head>
 <header class="site-header">
     <br/>
@@ -159,9 +164,9 @@
         </div>
         <div class="mermaid middle">
             flowchart LR
-            A(Aircraft)		-->			B(Route)
-            B				-- * --o 	C(Fix)
-            C 				--> 		D(2DPoint)
+            A(Aircraft) --> B(Route)
+            B -- * --o C(Fix)
+            C --> D(2DPoint)
         </div>
         <div class="content-h4">
             本质
@@ -172,6 +177,60 @@
         <div class="content-words">
             通常软件领域与领域专家人员会进行很长时间的讨论来交换知识。建立早期模型并验证其是否可以工作，修改模型就不再是开发人员的单项联系，而是存在反馈。这帮助我们更清晰、准确地理解领域。这样的模型体现两个专业领域的交汇，很消耗时间，但软件的最终目的是解决真实领域的业务问题，所以它必须与领域完美结合。
         </div>
+        <div class="content-h2">
+            2. The Ubiquitous language
+        </div>
+        <div class="content-h3">
+            Request for public language
+        </div>
+        <div class="content-words">
+            <b>两个领域合力开发领域模型带来的问题是语言不一致。</b>
+        </div>
+        <div class="content-words">
+            开发人员满脑子都是类、方法、算法、模式，总是想将实际生活中的概念和程序中的工
+            件做对应。他们希望看到要建立哪些对象类，要如何对对象类之间的关系建模。但领域专家一无所知，他们只了解他们特定领域的专业知识。克服此现象需要使用 <b>两个领域的公共语言</b>
+            去描述领域，若不能共享一个公共语言来讨论领域，项目会面临严峻问题。
+        </div>
+        <div class="content-words">
+            领域驱动设计的一个核心的原则是使用一种基于模型的语言。因为模型是软件满足
+            领域的共同点，它很适合作为这种通用语言的构造基础。使用模型作为语言的主干，并要求团队在交流时使用一致的语言，在代码中也是这样。这就是通用语言（Ubiquitous Language）。
+        </div>
+        <div class="content-words">
+            这种语言的形成并非一日之功，需要展开艰难的工作，确保发现语言的那些关键元素。我们需要发现定义领域和模型的关键概念，描述他们的适当用词，并开始使用它们。它们当中的一些概念很容易被发现，但另一些则不然。
+        </div>
+        <div class="content-words">
+            <b>构建这样的语言会获取清晰的结果：模型与语言相互密切关联。一个对语言的变更会导致模型的变更。</b>
+        </div>
+        <div class="content-words">
+            <b>开发人员应留意领域专家试图呈现设计中的内容存在的二义性或不一致的部分。</b>
+        </div>
+        <div class="content-h3">
+            Create public language
+        </div>
+        <div class="content-h4">
+            范例
+        </div>
+        <div class="middle" id="diagram-1"></div>
+        <div class="mermaid middle">
+            flowchart LR
+            A(Aircraft) --> B(Flight Plan)
+            B --> C(Route)
+            C -- * --o D(Fix)
+            D --> E(2DPoint)
+        </div>
+
+        <div class="middle" id="diagram-2"></div>
+        <div class="content-words">
+            UML很适合构建模型，它也真的是一种很好的记录关键概念及其关系的工具。但UML图一单复杂，即使是软件专家也很难阅读。所以，我们可以使用项目文档，通过小的图对模型的沟通，每一张小图包含了模型的一个子集，就像是分离关注<sup><a
+                href="#1">[1]</a></sup>。这些文档甚至可以手绘——因为它达到比较稳定的状态前会发生多次变化。
+        </div>
+        <div class="content-words">
+            <b>大图混乱，并不能传达比小图的集合更好理解，当然，也可以使用优秀的代码进行沟通（代码即注释），通过测试断言来描述行为。</b>
+        </div>
+
+        <div class="content-addition">
+            <span id="1">[1] <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">https://en.wikipedia.org/wiki/Separation_of_concerns</a></span><br/>
+        </div>
     </div>
 </div>
 </body>
@@ -179,3 +238,44 @@
 <div class="back-to-home-page">
     <a class="call-to-action__link button" href="/">返回首页</a>
 </div>
+<script>
+    var d = Diagram.parse("" +
+        "开发人员->领域专家: 我们想监控空中交通，应该从哪里开始？\n" +
+        "领域专家->开发人员: 让我们从最基础的开始吧。所有的交通由飞机组成。\n" +
+        "领域专家->开发人员: 每架飞机从一个出发地起飞，并在一个目的地点着陆\n" +
+        "开发人员->领域专家: 很容易嘛。在飞行时，飞机会按照驾驶员的意愿选择任何空中线路吗? \n" +
+        "开发人员->领域专家: 是不是等于说他们可以决定他们能走哪条路，只要他们能到达终点?\n" +
+        "领域专家->开发人员: 哦不。驾驶员会收到一条他们应该遵照的飞行路线。\n" +
+        "领域专家->开发人员: 并且他们必须尽可能地 跟那条飞行路线吻合\n" +
+        "开发人员->领域专家: 我会把这条路线考虑成空中的 3D 线路。\n" +
+        "开发人员->领域专家: 如果我们使用笛卡尔系统坐标， \n" +
+        "开发人员->领域专家: 那么一条飞行路线会被简化成一系列 3D 的点。\n" +
+        "领域专家->开发人员: 我可不这么认为。我们不会这样看待飞行路线的。\n" +
+        "领域专家->开发人员: 飞行路线实际上是飞机预期的空中线路在地面上的映射。\n" +
+        "领域专家->开发人员: 飞行路线会穿过一系列地面上的点，\n" +
+        "领域专家->开发人员: 而这些点我们可以用经度和纬度来决定。\n" +
+        "开发人员->领域专家: 哦，那我们可以称每一个这样的点为一个方位，\n" +
+        "开发人员->领域专家: 因为它是地球表面上的一个固定的点。\n" +
+        "开发人员->领域专家: 我们将使用一系列2D的点来描述线路。\n" +
+        "开发人员->领域专家: 顺便说一句，出发地和终点都属于方位。\n" +
+        "开发人员->领域专家: 我们不再会将它们考虑成其他不同的概念\n" +
+        "开发人员->领域专家: 飞行路线到达终点就如同它到达其他的方位一样。\n" +
+        "开发人员->领域专家: 飞机必须遵照飞行路线，\n" +
+        "开发人员->领域专家: 但这是否意味着它可以按照自己的意愿选择飞行高度呢?\n" +
+        "领域专家->开发人员: 不。飞机在一个特定的时刻的海拔高度也会在飞行计划中有规定。\n" +
+        "开发人员->领域专家: 飞行计划?那是什么意思?\n" +
+        "领域专家->开发人员: 在离开机场之前，驾驶员会接到一个详细的飞行计划，\n" +
+        "领域专家->开发人员: 包括所有关于这次飞行的信息：\n" +
+        "领域专家->开发人员: 飞行路线、巡航高度、巡航速度和飞机的类型\n" +
+        "领域专家->开发人员: 甚至机组成员的信息等\n" +
+        "开发人员->领域专家: 噢，飞行计划看起来相当的重要。我们可得把它加到模型中。");
+    d.drawSVG('diagram-1', {theme: 'simple'});
+    d = Diagram.parse("" +
+        "开发人员->领域专家: 好多了。当我看到这副图时，我会了解到很多事情。\n" +
+        "开发人员->领域专家: 在监控空中交通时， 我们其实并不对飞机本身感兴趣，\n" +
+        "开发人员->领域专家: 不管它是白色的还是蓝色的，也不管它是“波音”的还是“空客”的。\n" +
+        "开发人员->领域专家: 我们对它们的“飞行”(flight)感兴趣。\n" +
+        "开发人员->领域专家: 这才是我们实际上要跟踪和度量的东西。\n" +
+        "开发人员->领域专家: 我认为我们应该对模型做些改变以确保其更加准确。");
+    d.drawSVG('diagram-2', {theme: 'simple'});
+</script>

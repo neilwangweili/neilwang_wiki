@@ -24,15 +24,7 @@ jobs:
           DOCKER_ADDRESS: ${{ secrets.DOCKER_ADDRESS }}
           DOCKER_REPO_NAME: ${{secrets.DOCKER_REPO_NAME}}
         run: |
-          sudo tee /etc/docker/daemon.json <<- EOF
-            {
-              "insecure-registries": [
-                "$DOCKER_ADDRESS"
-              ]
-            }
-          EOF
-          sudo service docker restart
-          docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD $DOCKER_ADDRESS
+          docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
           docker build -t $DOCKER_ADDRESS/$DOCKER_REPO_NAME . && docker push $DOCKER_ADDRESS/$DOCKER_REPO_NAME
   deploy:
     runs-on: ubuntu-latest
@@ -48,14 +40,6 @@ jobs:
           TARGET_MACHINE: ${{ secrets.TARGET_MACHINE }}
           DOCKER_REPO_NAME: ${{secrets.DOCKER_REPO_NAME }}
         run: |
-          sudo tee /etc/docker/daemon.json <<- EOF
-                      {
-                        "insecure-registries": [
-                          "$DOCKER_ADDRESS"
-                        ]
-                      }
-          EOF
-          sudo service docker restart
           sudo tee /home/id_rsa <<- EOF
           $DEPLOY_KEY
           EOF

@@ -2573,7 +2573,7 @@ input[type="search"]::-webkit-search-cancel-button {
   color: #454545;
   padding: 0 0 0 2rem;
   border-radius: 30px;
-  background-image: url("../img/search.svg");
+  background-image: url("doc/img/search.svg");
   background-position: 1em center;
   background-repeat: no-repeat;
   background-size: 16px;
@@ -2581,7 +2581,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .topcoat-search-input:focus,
 .topcoat-search-input--large:focus {
-  background-image: url("../img/search_dark.svg");
+  background-image: url("doc/img/search_dark.svg");
   background-color: #edf1f1;
   color: #000;
   border: 1px solid #0940fd;

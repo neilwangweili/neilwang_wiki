@@ -27,7 +27,7 @@
     <script src="../node_modules/qunitjs/qunit/qunit.js"></script>
     <script src="../node_modules/qunit-extras/qunit-extras.js"></script>
     <script src="../node_modules/platform/platform.js"></script>
-    <script src="./asset/test-ui.js"></script>
+    <script src="asset/test-ui.js"></script>
     <div id="qunit"></div>
     <div id="exports"></div>
     <div id="module"></div>
@@ -273,13 +273,13 @@
         }
 
         function loadTests() {
-          require(getConfig(), ['test'], function() {
+          require(getConfig(), ['src/bower_components/lodash/test/test'], function() {
             QUnit.start();
           });
         }
 
         function loadModulesAndTests() {
-          require(getConfig(), ['lodash', 'shimmed', 'underscore'], function(lodash, shimmed, underscore) {
+          require(getConfig(), ['lodash', 'shimmed', 'src/bower_components/underscore/underscore'], function(lodash, shimmed, underscore) {
             lodashModule = lodash;
             lodashModule.moduleName = 'lodash';
 

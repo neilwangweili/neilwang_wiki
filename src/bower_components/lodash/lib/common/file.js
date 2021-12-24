@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const glob = require('glob');
 const path = require('path');
 
-const minify = require('../common/minify.js');
+const minify = require('./minify.js');
 
 /*----------------------------------------------------------------------------*/
 

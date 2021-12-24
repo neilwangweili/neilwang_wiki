@@ -21,7 +21,7 @@
     <script src="../node_modules/qunit-extras/qunit-extras.js"></script>
     <script src="../vendor/json-js/json2.js"></script>
     <script src="../node_modules/platform/platform.js"></script>
-    <script src="./asset/test-ui.js"></script>
+    <script src="asset/test-ui.js"></script>
     <script src="../lodash.js"></script>
     <script>
       QUnit.config.asyncRetries = 10;
@@ -148,9 +148,9 @@
 
         QUnit.config.autostart = false;
 
-        require(getConfig(), ['underscore'], function(lodash) {
+        require(getConfig(), ['src/bower_components/underscore/underscore'], function(lodash) {
           _ = mixinPrereqs(lodash);
-          require(getConfig(), ['backbone'], function() {
+          require(getConfig(), ['src/bower_components/lodash/test/backbone'], function() {
             require(getConfig(), [
               'test/setup/dom-setup',
               'test/setup/environment',

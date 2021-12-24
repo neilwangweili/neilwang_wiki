@@ -30,7 +30,9 @@ Review the [build differences](https://github.com/lodash/lodash/wiki/build-diffe
 ## Installation
 
 In a browser:
+
 ```html
+
 <script src="lodash.js"></script>
 ```
 

@@ -26,7 +26,7 @@ jobs:
         run: |
           time=$(date "+%Y%m%d%H%M%S")
           docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
-          docker build -t $DOCKER_ADDRESS/$DOCKER_REPO_NAME . && docker push $DOCKER_ADDRESS/$DOCKER_REPO_NAME:$time
+          docker build -t $DOCKER_ADDRESS/$DOCKER_REPO_NAME:$time . && docker push $DOCKER_ADDRESS/$DOCKER_REPO_NAME:$time
   deploy:
     runs-on: ubuntu-latest
     needs: build

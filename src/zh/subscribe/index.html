@@ -373,7 +373,7 @@ height: 50px;font-weight: bolder;background-color: black"
         </form>
     </div>
 </div>
-<div class="feed" id="feed" style="display: none;opacity: 0;margin-top: 500px;transition: all 3s ease-in-out;">
+<div class="feed" id="feed" style="display: none;opacity: 0;">
     <div style="font-size: 2rem;font-style: italic;text-align: center;margin: 40px 0 20px 0;">打赏作者一杯咖啡？☕️</div>
     <div class="feed-image">
         <img src="../../img/subscribe/feed.png">
@@ -412,7 +412,6 @@ var $mcj = jQuery.noConflict(true);</script>
         clearInterval(timer);
         timer = setInterval(function () {
             feed.style.opacity = Number(feed.style.opacity) + 0.05;
-            feed.style.marginTop = "0px";
             if (Number(feed.style.opacity) >= 1) {
                 clearInterval(timer)
                 feed.style.opacity = 1
@@ -424,8 +423,7 @@ var $mcj = jQuery.noConflict(true);</script>
         clearInterval(timer);
         timer = setInterval(function () {
             feed.style.opacity = Number(feed.style.opacity) - 0.05;
-            feed.style.marginTop = "500px";
-            if (Number(feed.style.opacity) === 0) {
+            if (Number(feed.style.opacity) <= 0) {
                 clearInterval(timer)
                 feed.style.opacity = 0
                 feed.style.display = 'none';

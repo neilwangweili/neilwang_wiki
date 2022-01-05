@@ -326,12 +326,13 @@
     <br/>
 </header>
 <br/>
-<body class="content-body">
+<body class="content-body" id="body">
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <div id="mc_embed_signup" class="content-body-class">
     <div class="wrapper rounded6" id="templateContainer">
         <form action="https://wiki.us1.list-manage.com/subscribe/post?u=7fb0cdff945d40f65bc41e669&amp;id=64248ffd53"
-              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+              class="validate"
               target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
                 <h1 class="hosting-pricing-plan-block__header">订阅</h1>
@@ -339,13 +340,15 @@
                 <div class="mc-field-group">
                     <label for="mce-FNAME" class="content-h1">您的姓名 </label>
                     <div class="field-group">
-                        <input class="input" style="border-radius: 50px;" type="text" value="" name="FNAME" id="mce-FNAME">
+                        <input class="input" style="border-radius: 50px;" type="text" value="" name="FNAME"
+                               id="mce-FNAME">
                     </div>
                 </div>
                 <div class="mc-field-group">
                     <label for="mce-EMAIL" class="content-h1">您的电子邮箱地址 <span class="asterisk">*</span></label>
                     <div class="field-group">
-                        <input class="input required email" style="border-radius: 50px;" type="email" value="" name="EMAIL" id="mce-EMAIL">
+                        <input class="input required email" style="border-radius: 50px;" type="email" value=""
+                               name="EMAIL" id="mce-EMAIL">
                     </div>
                 </div>
                 <div id="mce-responses" class="clear">
@@ -355,7 +358,8 @@
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
                                                                                           name="b_7fb0cdff945d40f65bc41e669_64248ffd53"
-                                                                                          tabindex="-1" value=""></div>
+                                                                                          tabindex="-1" value="">
+                </div>
                 <div class="content-words">
                     我们将会在发布新文章后第一时间通过邮件的形式告知您。
                 </div>
@@ -367,6 +371,12 @@ height: 50px;font-weight: bolder;background-color: black"
                 </div>
             </div>
         </form>
+    </div>
+</div>
+<div class="feed" id="feed" style="display: none;opacity: 0;margin-top: 500px;transition: all 3s ease-in-out;">
+    <div style="font-size: 2rem;font-style: italic;text-align: center;margin: 40px 0 20px 0;">打赏作者一杯咖啡？☕️</div>
+    <div class="feed-image">
+        <img src="../../img/subscribe/feed.png">
     </div>
 </div>
 <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
@@ -389,7 +399,39 @@ height: 50px;font-weight: bolder;background-color: black"
 var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
 </body>
+<script>
+    let form = document.getElementById("mc-embedded-subscribe-form");
+    let content = document.getElementById("mc_embed_signup");
+    let feed = document.getElementById("feed");
+    let body = document.getElementById("body");
+    let timer;
+
+    form.addEventListener("mouseenter", function (event) {
+        content.style.width = '70%';
+        feed.style.display = 'inline';
+        clearInterval(timer);
+        timer = setInterval(function () {
+            feed.style.opacity = Number(feed.style.opacity) + 0.05;
+            feed.style.marginTop = "0px";
+            if (Number(feed.style.opacity) >= 1) {
+                clearInterval(timer)
+                feed.style.opacity = 1
+            }
+        }, 100)
+    }, false);
+
+    form.addEventListener("mouseleave", function (event) {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            feed.style.opacity = Number(feed.style.opacity) - 0.05;
+            feed.style.marginTop = "500px";
+            if (Number(feed.style.opacity) === 0) {
+                clearInterval(timer)
+                feed.style.opacity = 0
+                feed.style.display = 'none';
+                content.style.width = '100%';
+            }
+        }, 100)
+    }, false);
+</script>
 </html>
-<div class="back-to-home-page">
-    <a class="call-to-action__link button" href="/">返回首页</a>
-</div>

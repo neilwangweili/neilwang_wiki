@@ -3,14 +3,14 @@
 }
 
 .content-body-class {
-    width: 100%;
+    margin: 0 0 0 15%;
     float: left;
     display: inline;
     transition: all .5s ease-in-out;
 }
 
 .feed {
-    width: 30%;
+    margin: 0 0 0 15%;
     float: left;
     display: inline;
 }

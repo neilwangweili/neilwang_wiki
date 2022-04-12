@@ -373,7 +373,7 @@ height: 50px;font-weight: bolder;background-color: black"
         </form>
     </div>
 </div>
-<div class="feed" id="feed" style="display: none;opacity: 0;">
+<div class="feed" id="feed">
     <div style="font-size: 2rem;font-style: italic;text-align: center;margin: 40px 0 20px 0;">打赏作者一杯咖啡？☕️</div>
     <div class="feed-image">
         <img src="../../img/subscribe/five.jpeg">
@@ -402,37 +402,4 @@ height: 50px;font-weight: bolder;background-color: black"
 var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
 </body>
-<script>
-    let form = document.getElementById("mc-embedded-subscribe-form");
-    let content = document.getElementById("mc_embed_signup");
-    let feed = document.getElementById("feed");
-    let body = document.getElementById("body");
-    let timer;
-
-    form.addEventListener("mouseenter", function (event) {
-        content.style.width = '70%';
-        feed.style.display = 'inline';
-        clearInterval(timer);
-        timer = setInterval(function () {
-            feed.style.opacity = Number(feed.style.opacity) + 0.05;
-            if (Number(feed.style.opacity) >= 1) {
-                clearInterval(timer)
-                feed.style.opacity = 1
-            }
-        }, 100)
-    }, false);
-
-    form.addEventListener("mouseleave", function (event) {
-        clearInterval(timer);
-        timer = setInterval(function () {
-            feed.style.opacity = Number(feed.style.opacity) - 0.05;
-            if (Number(feed.style.opacity) <= 0) {
-                clearInterval(timer)
-                feed.style.opacity = 0
-                feed.style.display = 'none';
-                content.style.width = '100%';
-            }
-        }, 100)
-    }, false);
-</script>
 </html>

@@ -3,6 +3,12 @@
 }
 
 .content-body-class {
+    margin: 0 0 0 0;
+    display: inline;
+    transition: all .5s ease-in-out;
+}
+
+.subscribe-content-body-class {
     margin: 0 0 0 15%;
     float: left;
     display: inline;

@@ -1,5 +1,5 @@
 FROM nginx
-MAINTAINER Neil Wang <webmaster@neilwang.wiki>
+MAINTAINER Neil Wang <wangweili457@gmail.com>
 WORKDIR /usr/src/app/
 COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./  /usr/share/nginx/html/

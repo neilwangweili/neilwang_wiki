@@ -1,2 +1,2 @@
 # neilwang_wiki
-https://neilwang.wiki
+https://vwwl.github.io/neilwang_wiki
